@@ -21,6 +21,20 @@ class Solution {
         return res;
     }
 }
+//用LinkedList实现栈会比Stack快
+class Solution {
+    public int[] reversePrint(ListNode head) {
+        LinkedList<Integer> stack = new LinkedList<Integer>();
+        while(head != null) {
+            stack.addLast(head.val);
+            head = head.next;
+        }
+        int[] res = new int[stack.size()];
+        for(int i = 0; i < res.length; i++)
+            res[i] = stack.removeLast();
+    return res;
+    }
+}
 //方法二：不用栈
 class Solution {
     public int[] reversePrint(ListNode head) {
@@ -31,7 +45,7 @@ class Solution {
             node = node.next;
         }
         int[] nums = new int[count];
-        node = head;
+        node = head;  //这里有点不懂
         for (int i = count - 1; i >= 0; --i) {
             nums[i] = node.val;
             node = node.next;
